@@ -1,145 +1,216 @@
-# Especificações do Projeto
+# ESPECIFICAÇÃO DO PROJETO
 
-<span style="color:red">Pré-requisitos: <a href="1-Documentação de Contexto.md"> Documentação de Contexto</a></span>
+## Definição do Problema
 
-Definição do problema e ideia de solução a partir da perspectiva do usuário. É composta pela definição do  diagrama de personas, histórias de usuários, requisitos funcionais e não funcionais além das restrições do projeto.
+Usuários enfrentam dificuldades para encontrar assistências técnicas confiáveis próximas, comparar serviços disponíveis e acompanhar o andamento dos reparos. Muitas vezes, precisam recorrer a locais distantes, com custos mais elevados e sem garantia de qualidade.
 
-Apresente uma visão geral do que será abordado nesta parte do documento, enumerando as técnicas e/ou ferramentas utilizadas para realizar a especificações do projeto
+Além disso, técnicos e pequenas empresas possuem dificuldade em divulgar seus serviços e atrair novos clientes.
+
+---
+
+## Justificativa
+
+O crescimento do uso de dispositivos eletrônicos aumenta a demanda por manutenção. No entanto, ainda há uma carência de soluções centralizadas que conectem clientes a prestadores de serviço de forma eficiente.
+
+O aplicativo proposto busca resolver esse problema, oferecendo praticidade, transparência e melhor comunicação entre as partes envolvidas.
+
+---
 
 ## Personas
 
-Pedro Paulo tem 26 anos, é arquiteto recém-formado e autônomo. Pensa em se desenvolver profissionalmente através de um mestrado fora do país, pois adora viajar, é solteiro e sempre quis fazer um intercâmbio. Está buscando uma agência que o ajude a encontrar universidades na Europa que aceitem alunos estrangeiros.
+### Persona 1 – Cliente
 
-Enumere e detalhe as personas da sua solução. Para tanto, baseie-se tanto nos documentos disponibilizados na disciplina e/ou nos seguintes links:
+**Nome:** Carlos Henrique
+**Idade:** 48 anos
+**Profissão:** Motorista autônomo
 
-> **Links Úteis**:
-> - [Rock Content](https://rockcontent.com/blog/personas/)
-> - [Hotmart](https://blog.hotmart.com/pt-br/como-criar-persona-negocio/)
-> - [O que é persona?](https://resultadosdigitais.com.br/blog/persona-o-que-e/)
-> - [Persona x Público-alvo](https://flammo.com.br/blog/persona-e-publico-alvo-qual-a-diferenca/)
-> - [Mapa de Empatia](https://resultadosdigitais.com.br/blog/mapa-da-empatia/)
-> - [Mapa de Stalkeholders](https://www.racecomunicacao.com.br/blog/como-fazer-o-mapeamento-de-stakeholders/)
->
-Lembre-se que você deve ser enumerar e descrever precisamente e personalizada todos os clientes ideais que sua solução almeja.
+**Descrição:**
+Possui pouco conhecimento técnico e enfrenta dificuldades para encontrar assistências próximas e confiáveis.
 
-## Histórias de Usuários
+**Objetivos:**
 
-Com base na análise das personas forma identificadas as seguintes histórias de usuários:
+* Encontrar serviços próximos
+* Comparar preços
+* Acompanhar reparos
 
-|EU COMO... `PERSONA`| QUERO/PRECISO ... `FUNCIONALIDADE` |PARA ... `MOTIVO/VALOR`                 |
-|--------------------|------------------------------------|----------------------------------------|
-|Usuário do sistema  | Registrar minhas tarefas           | Não esquecer de fazê-las               |
-|Administrador       | Alterar permissões                 | Permitir que possam administrar contas |
+---
 
-Apresente aqui as histórias de usuário que são relevantes para o projeto de sua solução. As Histórias de Usuário consistem em uma ferramenta poderosa para a compreensão e elicitação dos requisitos funcionais e não funcionais da sua aplicação. Se possível, agrupe as histórias de usuário por contexto, para facilitar consultas recorrentes à essa parte do documento.
+### Persona 2 – Técnico
 
-> **Links Úteis**:
-> - [Histórias de usuários com exemplos e template](https://www.atlassian.com/br/agile/project-management/user-stories)
-> - [Como escrever boas histórias de usuário (User Stories)](https://medium.com/vertice/como-escrever-boas-users-stories-hist%C3%B3rias-de-usu%C3%A1rios-b29c75043fac)
-> - [User Stories: requisitos que humanos entendem](https://www.luiztools.com.br/post/user-stories-descricao-de-requisitos-que-humanos-entendem/)
-> - [Histórias de Usuários: mais exemplos](https://www.reqview.com/doc/user-stories-example.html)
-> - [9 Common User Story Mistakes](https://airfocus.com/blog/user-story-mistakes/)
+**Nome:** João Marcelo
+**Idade:** 35 anos
+**Profissão:** Técnico em eletrônicos
 
+**Descrição:**
+Dono de assistência técnica que deseja aumentar sua visibilidade e organizar melhor seus atendimentos.
+
+**Objetivos:**
+
+* Atrair clientes
+* Organizar agenda
+* Melhorar reputação
+
+---
+
+## Histórias de Usuário
+
+### Cliente
+
+* Como cliente, quero localizar assistências próximas para encontrar opções rápidas
+* Como cliente, quero visualizar serviços para comparar opções
+* Como cliente, quero agendar atendimento para facilitar o processo
+* Como cliente, quero acompanhar o status do reparo para saber quando ficará pronto
+* Como cliente, quero avaliar serviços para ajudar outros usuários
+* Como cliente, quero conversar com o técnico para tirar dúvidas
+
+---
+
+### Técnico
+
+* Como técnico, quero cadastrar meus serviços para divulgar meu trabalho
+* Como técnico, quero definir minha agenda para organizar atendimentos
+* Como técnico, quero gerenciar agendamentos para controlar minha demanda
+* Como técnico, quero atualizar o status do reparo para informar o cliente
+* Como técnico, quero responder mensagens para melhorar o atendimento
+
+---
 
 ## Requisitos
 
-As tabelas que se seguem apresentam os requisitos funcionais e não funcionais que detalham o escopo do projeto. Para determinar a prioridade de requisitos, aplicar uma técnica de priorização de requisitos e detalhar como a técnica foi aplicada.
-
 ### Requisitos Funcionais
 
-|ID    | Descrição do Requisito  | Prioridade | Responsável |
-|------|-----------------------------------------|----| ----|
-|RF-001| Permitir que o usuário cadastre tarefas | ALTA | Aluno X |
-|RF-002| Emitir um relatório de tarefas no mês   | MÉDIA | Aluno Y |
+| ID     | Descrição                             | Prioridade |
+| ------ | ------------------------------------- | ---------- |
+| RF-001 | Cadastro e login de usuários          | ALTA       |
+| RF-002 | Cadastro de serviços por técnicos     | ALTA       |
+| RF-003 | Definição de agenda                   | ALTA       |
+| RF-004 | Geolocalização de assistências        | ALTA       |
+| RF-005 | Visualização de serviços e avaliações | ALTA       |
+| RF-006 | Agendamento de atendimentos           | ALTA       |
+| RF-007 | Acompanhamento do reparo              | ALTA       |
+| RF-008 | Comunicação via chat                  | ALTA       |
+| RF-009 | Avaliação de assistências             | MÉDIA      |
 
-### Requisitos não Funcionais
+---
 
-|ID     | Descrição do Requisito  |Prioridade |
-|-------|-------------------------|----|
-|RNF-001| O sistema deve ser responsivo para rodar em um dispositivos móvel | MÉDIA | 
-|RNF-002| Deve processar requisições do usuário em no máximo 3s |  BAIXA | 
+### Requisitos Não Funcionais
 
-Com base nas Histórias de Usuário, enumere os requisitos da sua solução. Classifique esses requisitos em dois grupos:
+| ID      | Descrição                                     | Prioridade |
+| ------- | --------------------------------------------- | ---------- |
+| RNF-001 | Sistema deve funcionar em dispositivos móveis | ALTA       |
+| RNF-002 | Interface simples e intuitiva                 | ALTA       |
+| RNF-003 | Segurança dos dados                           | ALTA       |
+| RNF-004 | Tempo de resposta de até 20 segundos          | MÉDIA      |
+| RNF-005 | Chat em tempo real ou próximo disso           | ALTA       |
 
-- [Requisitos Funcionais
- (RF)](https://pt.wikipedia.org/wiki/Requisito_funcional):
- correspondem a uma funcionalidade que deve estar presente na
-  plataforma (ex: cadastro de usuário).
-- [Requisitos Não Funcionais
-  (RNF)](https://pt.wikipedia.org/wiki/Requisito_n%C3%A3o_funcional):
-  correspondem a uma característica técnica, seja de usabilidade,
-  desempenho, confiabilidade, segurança ou outro (ex: suporte a
-  dispositivos iOS e Android).
-Lembre-se que cada requisito deve corresponder à uma e somente uma
-característica alvo da sua solução. Além disso, certifique-se de que
-todos os aspectos capturados nas Histórias de Usuário foram cobertos.
+---
 
 ## Restrições
 
-O projeto está restrito pelos itens apresentados na tabela a seguir.
+| ID    | Restrição                    |
+| ----- | ---------------------------- |
+| R-001 | Projeto acadêmico sem custos |
+| R-002 | Sem cobrança para uso        |
+| R-003 | Prazo até final do semestre  |
+| R-004 | Backend simples              |
+| R-005 | Apenas mobile                |
+| R-006 | Inicialmente Android         |
+| R-007 | Dependência de internet      |
 
-|ID| Restrição                                             |
-|--|-------------------------------------------------------|
-|01| O projeto deverá ser entregue até o final do semestre |
-|02| Não pode ser desenvolvido um módulo de backend        |
-
-Enumere as restrições à sua solução. Lembre-se de que as restrições geralmente limitam a solução candidata.
-
-> **Links Úteis**:
-> - [O que são Requisitos Funcionais e Requisitos Não Funcionais?](https://codificar.com.br/requisitos-funcionais-nao-funcionais/)
-> - [O que são requisitos funcionais e requisitos não funcionais?](https://analisederequisitos.com.br/requisitos-funcionais-e-requisitos-nao-funcionais-o-que-sao/)
+---
 
 ## Diagrama de Casos de Uso
 
-O diagrama de casos de uso é o próximo passo após a elicitação de requisitos, que utiliza um modelo gráfico e uma tabela com as descrições sucintas dos casos de uso e dos atores. Ele contempla a fronteira do sistema e o detalhamento dos requisitos funcionais com a indicação dos atores, casos de uso e seus relacionamentos. 
+![Diagrama de Casos de Uso](../img/diagrama.png)
 
-As referências abaixo irão auxiliá-lo na geração do artefato “Diagrama de Casos de Uso”.
+---
 
-> **Links Úteis**:
-> - [Criando Casos de Uso](https://www.ibm.com/docs/pt-br/elm/6.0?topic=requirements-creating-use-cases)
-> - [Como Criar Diagrama de Caso de Uso: Tutorial Passo a Passo](https://gitmind.com/pt/fazer-diagrama-de-caso-uso.html/)
-> - [Lucidchart](https://www.lucidchart.com/)
-> - [Astah](https://astah.net/)
-> - [Diagrams](https://app.diagrams.net/)
+## Matriz de Rastreabilidade
 
-# Matriz de Rastreabilidade
+| História            | Requisito |
+| ------------------- | --------- |
+| Buscar assistências | RF-004    |
+| Ver serviços        | RF-005    |
+| Agendar             | RF-006    |
+| Acompanhar          | RF-007    |
+| Chat                | RF-008    |
+| Cadastro técnico    | RF-002    |
+| Agenda              | RF-003    |
 
-A matriz de rastreabilidade é uma ferramenta usada para facilitar a visualização dos relacionamento entre requisitos e outros artefatos ou objetos, permitindo a rastreabilidade entre os requisitos e os objetivos de negócio. 
+---
 
-A matriz deve contemplar todos os elementos relevantes que fazem parte do sistema, conforme a figura meramente ilustrativa apresentada a seguir.
-
-![Exemplo de matriz de rastreabilidade](img/02-matriz-rastreabilidade.png)
-
-> **Links Úteis**:
-> - [Artigo Engenharia de Software 13 - Rastreabilidade](https://www.devmedia.com.br/artigo-engenharia-de-software-13-rastreabilidade/12822/)
-> - [Verificação da rastreabilidade de requisitos usando a integração do IBM Rational RequisitePro e do IBM ClearQuest Test Manager](https://developer.ibm.com/br/tutorials/requirementstraceabilityverificationusingrrpandcctm/)
-> - [IBM Engineering Lifecycle Optimization – Publishing](https://www.ibm.com/br-pt/products/engineering-lifecycle-optimization/publishing/)
 
 
 # Gerenciamento de Projeto
 
-De acordo com o PMBoK v6 as dez áreas que constituem os pilares para gerenciar projetos, e que caracterizam a multidisciplinaridade envolvida, são: Integração, Escopo, Cronograma (Tempo), Custos, Qualidade, Recursos, Comunicações, Riscos, Aquisições, Partes Interessadas. Para desenvolver projetos um profissional deve se preocupar em gerenciar todas essas dez áreas. Elas se complementam e se relacionam, de tal forma que não se deve apenas examinar uma área de forma estanque. É preciso considerar, por exemplo, que as áreas de Escopo, Cronograma e Custos estão muito relacionadas. Assim, se eu amplio o escopo de um projeto eu posso afetar seu cronograma e seus custos.
+O gerenciamento do projeto será realizado com base nas boas práticas do PMBOK v6, considerando as principais áreas de conhecimento como escopo, tempo, custo, qualidade, recursos, comunicação e riscos.
 
-<!--
+Por se tratar de um projeto acadêmico, o foco está na organização eficiente das atividades, garantindo que o sistema seja desenvolvido dentro do prazo estabelecido, mantendo qualidade e alinhamento com os objetivos propostos.
+
+As áreas de escopo, cronograma e custos são tratadas de forma integrada, uma vez que qualquer alteração no escopo pode impactar diretamente o tempo de desenvolvimento e o esforço necessário da equipe.
+
+---
+
 ## Gerenciamento de Tempo
 
-Com diagramas bem organizados que permitem gerenciar o tempo nos projetos, o gerente de projetos agenda e coordena tarefas dentro de um projeto para estimar o tempo necessário de conclusão.
+O controle do tempo será realizado por meio de planejamento semanal das atividades, seguindo a metodologia ágil Scrum.
 
-![Diagrama de rede simplificado notação francesa (método francês)](img/02-diagrama-rede-simplificado.png)
+O projeto foi dividido em etapas principais:
 
-O gráfico de Gantt ou diagrama de Gantt também é uma ferramenta visual utilizada para controlar e gerenciar o cronograma de atividades de um projeto. Com ele, é possível listar tudo que precisa ser feito para colocar o projeto em prática, dividir em atividades e estimar o tempo necessário para executá-las.
+* Levantamento de requisitos
+* Definição de personas e histórias de usuário
+* Modelagem do sistema (casos de uso e requisitos)
+* Prototipação das telas
+* Desenvolvimento das funcionalidades
+* Testes e ajustes finais
 
-![Gráfico de Gantt](img/02-grafico-gantt.png)
--->
+Cada etapa será distribuída ao longo do semestre, permitindo acompanhamento contínuo da evolução do projeto.
+
+O cronograma visual é representado por um gráfico de Gantt, que auxilia na organização das tarefas e no controle dos prazos.
+
+![Gráfico de Gantt](img/02-project-timeline.png)
+
+---
 
 ## Gerenciamento de Equipe
 
-O gerenciamento adequado de tarefas contribuirá para que o projeto alcance altos níveis de produtividade. Por isso, é fundamental que ocorra a gestão de tarefas e de pessoas, de modo que os times envolvidos no projeto possam ser facilmente gerenciados. 
+A equipe será organizada com base na metodologia Scrum, visando melhorar a produtividade, comunicação e divisão de responsabilidades.
+
+A estrutura do time será composta por:
+
+* **Scrum Master:** responsável por garantir a organização do projeto e remover impedimentos
+* **Product Owner:** responsável por definir as funcionalidades e prioridades do sistema
+* **Equipe de Desenvolvimento:** responsável pela implementação do aplicativo mobile
+* **Responsável pelo Design:** responsável pela criação das interfaces e experiência do usuário
+
+As tarefas serão organizadas em um quadro Kanban (Trello), com as seguintes etapas:
+
+* Backlog
+* Em desenvolvimento
+* Em teste
+* Concluído
+
+Essa organização permite melhor acompanhamento do progresso e maior controle das entregas.
 
 ![Simple Project Timeline](img/02-project-timeline.png)
 
+---
+
 ## Gestão de Orçamento
 
-O processo de determinar o orçamento do projeto é uma tarefa que depende, além dos produtos (saídas) dos processos anteriores do gerenciamento de custos, também de produtos oferecidos por outros processos de gerenciamento, como o escopo e o tempo.
+A definição do orçamento do projeto foi realizada com base na estimativa de esforço da equipe, tempo de desenvolvimento e recursos necessários para a implementação da aplicação.
 
-![Orçamento](img/02-orcamento.png)
+Foram considerados os principais custos envolvidos em um projeto de desenvolvimento de software mobile, incluindo mão de obra, infraestrutura e ferramentas.
+
+| Recursos Necessários | Descrição                                                 | Valor Estimado (R$) |
+| -------------------- | --------------------------------------------------------- | ------------------- |
+| Recursos Humanos     | Desenvolvimento do aplicativo (frontend, lógica e testes) | 20.000,00           |
+| Design               | Criação da interface e experiência do usuário             | 3.000,00            |
+| Hardware             | Equipamentos utilizados no desenvolvimento                | 2.500,00            |
+| Software             | Ferramentas, bibliotecas e ambientes de desenvolvimento   | 1.500,00            |
+| Serviços             | Internet, APIs e possíveis integrações externas           | 1.500,00            |
+| **TOTAL**            |                                                           | **28.500,00**       |
+
+
+
+---
