@@ -101,7 +101,6 @@ Estrutura das telas
 Posicionamento de botões e menus
 Fluxo de navegação entre telas
 
-👉 Inserir aqui o link do Figma ou imagens dos wireframes na pasta /img
 
 Considerações de Usabilidade
 
