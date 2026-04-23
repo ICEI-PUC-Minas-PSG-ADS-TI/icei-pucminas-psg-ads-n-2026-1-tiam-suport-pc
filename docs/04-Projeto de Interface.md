@@ -1,36 +1,116 @@
+📄 04 - Projeto de Interface
+Visão Geral
 
-# Projeto de Interface
+O projeto de interface do aplicativo foi elaborado com foco na simplicidade, usabilidade e eficiência na interação entre usuários e técnicos. O objetivo principal é permitir que o usuário consiga encontrar assistências técnicas, agendar serviços e acompanhar o status dos reparos de forma intuitiva e rápida.
 
-<span style="color:red">Pré-requisitos: <a href="2-Especificação do Projeto.md"> Documentação de Especificação</a></span>
+A interface foi projetada considerando os requisitos funcionais e não funcionais definidos na especificação do projeto, priorizando facilidade de uso, navegação clara e acesso rápido às funcionalidades principais.
 
-Visão geral da interação do usuário pelas telas do sistema e protótipo interativo das telas com as funcionalidades que fazem parte do sistema (wireframes).
+Principais Interfaces do Sistema
 
- Apresente as principais interfaces da plataforma. Discuta como ela foi elaborada de forma a atender os requisitos funcionais, não funcionais e histórias de usuário abordados nas <a href="2-Especificação do Projeto.md"> Documentação de Especificação</a>.
+As principais telas do sistema são:
 
-## Diagrama de Fluxo
+🔐 Tela de Login
+Permite acesso ao sistema
+Campos: e-mail e senha
+Opção de cadastro
+📝 Tela de Cadastro
+Cadastro de usuários (cliente ou técnico)
+Informações básicas: nome, e-mail, senha, telefone
+🏠 Tela Inicial (Home)
+Exibe assistências técnicas próximas (lista ou mapa)
+Opções de busca e filtro
+Acesso rápido às funcionalidades principais
+🔧 Tela de Serviços
+Lista de serviços oferecidos por técnicos
+Exibição de descrição, preço e avaliações
+📅 Tela de Agendamento
+Permite selecionar data e horário
+Confirmação de atendimento
+🔄 Tela de Acompanhamento de Reparo
+Exibe status do serviço (em andamento, concluído, etc.)
+Histórico do atendimento
+💬 Tela de Chat
+Comunicação entre cliente e técnico
+Troca de mensagens em tempo real
+⭐ Tela de Avaliação
+Permite avaliar o serviço prestado
+Nota e comentário
+Relação com os Requisitos
 
-O diagrama apresenta o estudo do fluxo de interação do usuário com o sistema interativo e  muitas vezes sem a necessidade do desenho do design das telas da interface. Isso permite que o design das interações seja bem planejado e gere impacto na qualidade no design do wireframe interativo que será desenvolvido logo em seguida.
+A interface foi projetada diretamente com base nos requisitos do sistema:
 
-O diagrama de fluxo pode ser desenvolvido com “boxes” que possuem internamente a indicação dos principais elementos de interface - tais como menus e acessos - e funcionalidades, tais como editar, pesquisar, filtrar, configurar - e a conexão entre esses boxes a partir do processo de interação. Você pode ver mais explicações e exemplos https://www.lucidchart.com/blog/how-to-make-a-user-flow-diagram.
+RF-001 → Login e cadastro (telas de login e cadastro)
+RF-004 → Geolocalização (tela inicial)
+RF-005 → Visualização de serviços (tela de serviços)
+RF-006 → Agendamento (tela de agendamento)
+RF-007 → Acompanhamento (tela de reparo)
+RF-008 → Chat (tela de chat)
+RF-009 → Avaliação (tela de avaliação)
 
-![Exemplo de Diagrama de Fluxo](img/diagramafluxo2.jpg)
+Os requisitos não funcionais também foram considerados:
 
-As referências abaixo irão auxiliá-lo na geração do artefato “Diagramas de Fluxo”.
+Interface simples e intuitiva (RNF-002)
+Aplicação mobile (RNF-001)
+Comunicação eficiente (RNF-005)
+Diagrama de Fluxo
 
-> **Links Úteis**:
-> - [Fluxograma online: seis sites para fazer gráfico sem instalar nada | Produtividade | TechTudo](https://www.techtudo.com.br/listas/2019/03/fluxograma-online-seis-sites-para-fazer-grafico-sem-instalar-nada.ghtml)
+O fluxo principal de interação do usuário no sistema é apresentado abaixo:
 
-## Wireframes
+Início
+ ↓
+Login / Cadastro
+ ↓
+Tela Inicial (buscar assistências)
+ ↓
+Selecionar serviço
+ ↓
+Agendar atendimento
+ ↓
+Acompanhar reparo
+ ↓
+Chat com técnico
+ ↓
+Avaliar serviço
+ ↓
+Fim
 
-![Exemplo de Wireframe](img/wireframe-example.png)
+Esse fluxo representa o caminho principal do usuário cliente dentro do sistema, garantindo que todas as funcionalidades essenciais estejam conectadas de forma lógica e intuitiva.
 
-São protótipos usados em design de interface para sugerir a estrutura de um site web e seu relacionamentos entre suas páginas. Um wireframe web é uma ilustração semelhante do layout de elementos fundamentais na interface.
- 
-> **Links Úteis**:
-> - [Protótipos vs Wireframes](https://www.nngroup.com/videos/prototypes-vs-wireframes-ux-projects/)
-> - [Ferramentas de Wireframes](https://rockcontent.com/blog/wireframes/)
-> - [MarvelApp](https://marvelapp.com/developers/documentation/tutorials/)
-> - [Figma](https://www.figma.com/)
-> - [Adobe XD](https://www.adobe.com/br/products/xd.html#scroll)
-> - [Axure](https://www.axure.com/edu) (Licença Educacional)
-> - [InvisionApp](https://www.invisionapp.com/) (Licença Educacional)
+Wireframes
+
+Os wireframes representam a estrutura inicial das telas do sistema, sem foco em design visual, mas sim na organização dos elementos e funcionalidades.
+
+Os protótipos incluem:
+
+Tela de Login
+Tela de Cadastro
+Tela Inicial
+Tela de Serviços
+Tela de Agendamento
+Tela de Acompanhamento
+Tela de Chat
+Tela de Avaliação
+
+Os wireframes foram desenvolvidos utilizando a ferramenta:
+
+Figma
+
+Eles apresentam:
+
+Estrutura das telas
+Posicionamento de botões e menus
+Fluxo de navegação entre telas
+
+👉 Inserir aqui o link do Figma ou imagens dos wireframes na pasta /img
+
+Considerações de Usabilidade
+
+A interface foi projetada seguindo boas práticas de usabilidade, como:
+
+Navegação simples e direta
+Redução de passos para execução de tarefas
+Feedback visual para ações do usuário
+Organização clara das informações
+Comunicação eficiente entre usuário e sistema
+
+Essas decisões visam melhorar a experiência do usuário e garantir facilidade no uso do aplicativo, principalmente para usuários com baixo conhecimento técnico.
