@@ -1,115 +1,134 @@
-📄 04 - Projeto de Interface
-Visão Geral
+04 - PROJETO DE INTERFACE
+1. Visão Geral
 
-O projeto de interface do aplicativo foi elaborado com foco na simplicidade, usabilidade e eficiência na interação entre usuários e técnicos. O objetivo principal é permitir que o usuário consiga encontrar assistências técnicas, agendar serviços e acompanhar o status dos reparos de forma intuitiva e rápida.
+O projeto de interface do aplicativo foi desenvolvido com foco na usabilidade, simplicidade e eficiência na interação entre usuários e técnicos.
 
-A interface foi projetada considerando os requisitos funcionais e não funcionais definidos na especificação do projeto, priorizando facilidade de uso, navegação clara e acesso rápido às funcionalidades principais.
+O principal objetivo é permitir que o usuário localize assistências técnicas, visualize serviços, realize agendamentos e acompanhe o status dos reparos de forma clara e intuitiva.
 
-Principais Interfaces do Sistema
+A interface foi estruturada considerando os requisitos funcionais e não funcionais definidos no projeto, priorizando facilidade de navegação, organização das informações e redução do número de etapas para execução das tarefas.
 
-As principais telas do sistema são:
+2. Padrão de Navegação
 
-🔐 Tela de Login
-Permite acesso ao sistema
-Campos: e-mail e senha
-Opção de cadastro
-📝 Tela de Cadastro
-Cadastro de usuários (cliente ou técnico)
-Informações básicas: nome, e-mail, senha, telefone
-🏠 Tela Inicial (Home)
-Exibe assistências técnicas próximas (lista ou mapa)
-Opções de busca e filtro
-Acesso rápido às funcionalidades principais
-🔧 Tela de Serviços
-Lista de serviços oferecidos por técnicos
-Exibição de descrição, preço e avaliações
-📅 Tela de Agendamento
-Permite selecionar data e horário
-Confirmação de atendimento
-🔄 Tela de Acompanhamento de Reparo
-Exibe status do serviço (em andamento, concluído, etc.)
+A navegação do sistema foi definida com base em uma estrutura simples e objetiva, utilizando:
+
+Navegação por abas inferiores (Bottom Tab Navigation)
+Navegação entre telas (Stack Navigation)
+
+O menu principal do sistema é composto pelas seguintes seções:
+
+Home
+Serviços
+Agendamentos
+Chat
+Perfil
+
+Essa estrutura permite acesso rápido às funcionalidades principais do sistema.
+
+3. Descrição das Interfaces
+3.1 Tela de Login
+
+Responsável pelo acesso ao sistema.
+
+Funcionalidades:
+
+Entrada de e-mail e senha
+Acesso ao cadastro de novos usuários
+3.2 Tela de Cadastro
+
+Permite o registro de novos usuários.
+
+Campos:
+
+Nome
+E-mail
+Senha
+Telefone
+Tipo de usuário (cliente ou técnico)
+3.3 Tela Inicial (Home)
+
+Apresenta as assistências técnicas disponíveis próximas ao usuário.
+
+Funcionalidades:
+
+Listagem de assistências
+Campo de busca
+Filtros de pesquisa
+3.4 Tela de Serviços
+
+Exibe os serviços oferecidos pelos técnicos.
+
+Informações apresentadas:
+
+Nome do serviço
+Descrição
+Preço
+Avaliações
+3.5 Tela de Agendamento
+
+Permite ao usuário agendar um atendimento.
+
+Funcionalidades:
+
+Seleção de data
+Seleção de horário
+Confirmação do agendamento
+3.6 Tela de Acompanhamento
+
+Permite acompanhar o andamento do serviço.
+
+Informações:
+
+Status do reparo (em análise, em andamento, concluído)
 Histórico do atendimento
-💬 Tela de Chat
-Comunicação entre cliente e técnico
-Troca de mensagens em tempo real
-⭐ Tela de Avaliação
-Permite avaliar o serviço prestado
-Nota e comentário
-Relação com os Requisitos
+3.7 Tela de Chat
 
-A interface foi projetada diretamente com base nos requisitos do sistema:
+Permite a comunicação entre cliente e técnico.
 
-RF-001 → Login e cadastro (telas de login e cadastro)
-RF-004 → Geolocalização (tela inicial)
-RF-005 → Visualização de serviços (tela de serviços)
-RF-006 → Agendamento (tela de agendamento)
-RF-007 → Acompanhamento (tela de reparo)
-RF-008 → Chat (tela de chat)
-RF-009 → Avaliação (tela de avaliação)
+Funcionalidades:
 
-Os requisitos não funcionais também foram considerados:
+Envio e recebimento de mensagens
+Comunicação em tempo quase real
+3.8 Tela de Avaliação
 
-Interface simples e intuitiva (RNF-002)
-Aplicação mobile (RNF-001)
-Comunicação eficiente (RNF-005)
-Diagrama de Fluxo
+Permite ao usuário avaliar o serviço realizado.
 
-O fluxo principal de interação do usuário no sistema é apresentado abaixo:
+Funcionalidades:
 
-Início
- ↓
-Login / Cadastro
- ↓
-Tela Inicial (buscar assistências)
- ↓
-Selecionar serviço
- ↓
-Agendar atendimento
- ↓
-Acompanhar reparo
- ↓
-Chat com técnico
- ↓
-Avaliar serviço
- ↓
-Fim
+Atribuição de nota
+Registro de comentário
+4. Relação com os Requisitos
+Requisito	Interface
+RF-001	Login e Cadastro
+RF-004	Tela Inicial
+RF-005	Tela de Serviços
+RF-006	Tela de Agendamento
+RF-007	Tela de Acompanhamento
+RF-008	Tela de Chat
+RF-009	Tela de Avaliação
+5. Fluxo de Navegação
 
-Esse fluxo representa o caminho principal do usuário cliente dentro do sistema, garantindo que todas as funcionalidades essenciais estejam conectadas de forma lógica e intuitiva.
+O fluxo principal do usuário no sistema ocorre conforme descrito abaixo:
 
-Wireframes
+Início → Login/Cadastro → Tela Inicial → Seleção de Assistência → Visualização de Serviços → Agendamento → Acompanhamento → Chat → Avaliação → Fim
 
-Os wireframes representam a estrutura inicial das telas do sistema, sem foco em design visual, mas sim na organização dos elementos e funcionalidades.
+6. Wireframes
 
-Os protótipos incluem:
+Os wireframes foram desenvolvidos com o objetivo de representar a estrutura das telas e a organização dos elementos da interface.
 
-Tela de Login
-Tela de Cadastro
-Tela Inicial
-Tela de Serviços
-Tela de Agendamento
-Tela de Acompanhamento
-Tela de Chat
-Tela de Avaliação
+Eles contemplam:
 
-Os wireframes foram desenvolvidos utilizando a ferramenta:
-
-Figma
-
-Eles apresentam:
-
-Estrutura das telas
-Posicionamento de botões e menus
+Disposição dos componentes
+Hierarquia das informações
 Fluxo de navegação entre telas
 
+A ferramenta utilizada para a criação dos wireframes foi o Figma.
 
-Considerações de Usabilidade
+7. Considerações de Usabilidade
 
-A interface foi projetada seguindo boas práticas de usabilidade, como:
+A interface foi projetada com base em princípios de usabilidade, considerando:
 
-Navegação simples e direta
-Redução de passos para execução de tarefas
-Feedback visual para ações do usuário
+Navegação simples e objetiva
+Redução de etapas para execução de tarefas
 Organização clara das informações
-Comunicação eficiente entre usuário e sistema
-
-Essas decisões visam melhorar a experiência do usuário e garantir facilidade no uso do aplicativo, principalmente para usuários com baixo conhecimento técnico.
+Feedback visual das ações do usuário
+Facilidade de uso para usuários com diferentes níveis de conhecimento técnico
