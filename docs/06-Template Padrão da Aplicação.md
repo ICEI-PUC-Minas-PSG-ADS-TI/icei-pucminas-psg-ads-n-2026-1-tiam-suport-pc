@@ -1,12 +1,94 @@
-# Template Padrão da Aplicação
+6. Modelo de Dados (Firebase Firestore)
 
-<span style="color:red">Pré-requisitos: <a href="2-Especificação do Projeto.md"> Especificação do Projeto</a></span>, <a href="3-Projeto de Interface.md"> Projeto de Interface</a>, <a href="4-Metodologia.md"> Metodologia</a>
+O sistema utilizará o Firebase Firestore como banco de dados, adotando uma estrutura baseada em coleções e documentos.
 
-Layout padrão da aplicação que será utilizado em todas as páginas com a definição de identidade visual, aspectos de responsividade e iconografia.
+As coleções foram definidas de acordo com as funcionalidades do sistema, permitindo o gerenciamento de usuários, serviços, agendamentos, comunicação e avaliações.
 
-> **Links Úteis**:
->
-> - [CSS Website Layout (W3Schools)](https://www.w3schools.com/css/css_website_layout.asp)
-> - [Website Page Layouts](http://www.cellbiol.com/bioinformatics_web_development/chapter-3-your-first-web-page-learning-html-and-css/website-page-layouts/)
-> - [Perfect Liquid Layout](https://matthewjamestaylor.com/perfect-liquid-layouts)
-> - [How and Why Icons Improve Your Web Design](https://usabilla.com/blog/how-and-why-icons-improve-you-web-design/)
+Coleção: users
+
+Armazena os dados dos usuários do sistema, incluindo clientes e técnicos.
+
+Campos:
+
+id (string) – identificador único do usuário
+nome (string)
+email (string)
+telefone (string)
+tipo (string) – "cliente" ou "tecnico"
+createdAt (timestamp)
+Coleção: services
+
+Armazena os serviços oferecidos pelos técnicos.
+
+Campos:
+
+id (string)
+tecnicoId (string) – referência ao usuário técnico
+nome (string) – ex: "Troca de tela", "Troca de bateria"
+descricao (string)
+preco (number)
+createdAt (timestamp)
+
+Exemplos de serviços cadastrados:
+
+Troca de tela
+Troca de bateria
+Troca de carcaça
+Formatação de sistema
+Reparo de placa
+Coleção: appointments (agendamentos)
+
+Armazena os agendamentos realizados pelos usuários.
+
+Campos:
+
+id (string)
+clienteId (string)
+tecnicoId (string)
+servicoId (string)
+data (date)
+horario (string)
+status (string) – "em_analise", "em_andamento", "concluido"
+createdAt (timestamp)
+Coleção: messages
+
+Responsável pelo chat entre cliente e técnico.
+
+Campos:
+
+id (string)
+chatId (string) – identificador da conversa
+remetenteId (string)
+destinatarioId (string)
+mensagem (string)
+timestamp (timestamp)
+Coleção: reviews (avaliações)
+
+Armazena as avaliações realizadas pelos usuários após a conclusão do serviço.
+
+Campos:
+
+id (string)
+clienteId (string)
+tecnicoId (string)
+servicoId (string)
+nota (number) – de 1 a 5
+comentario (string)
+createdAt (timestamp)
+Relacionamentos entre Dados
+
+O modelo de dados estabelece os seguintes relacionamentos:
+
+Um usuário (cliente) pode realizar vários agendamentos
+Um usuário (técnico) pode oferecer vários serviços
+Um agendamento está vinculado a um cliente, um técnico e um serviço
+Um serviço pode possuir múltiplas avaliações
+Um usuário pode enviar e receber múltiplas mensagens
+Considerações
+
+O uso do Firebase Firestore permite:
+
+Armazenamento escalável de dados
+Sincronização em tempo real (utilizada no chat)
+Integração com autenticação via Firebase Authentication
+Facilidade de integração com aplicações mobile desenvolvidas em React Native
