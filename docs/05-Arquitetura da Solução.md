@@ -1,68 +1,128 @@
-# Arquitetura da Solução
+05 - ARQUITETURA DA SOLUÇÃO
+1. Visão Geral da Arquitetura
 
-<span style="color:red">Pré-requisitos: <a href="3-Projeto de Interface.md"> Projeto de Interface</a></span>
+O sistema será composto por uma aplicação mobile desenvolvida em React Native, responsável pela interface com o usuário, e por um backend responsável pelo processamento das requisições, aplicação das regras de negócio e armazenamento de dados.
 
-Definição de como o software é estruturado em termos dos componentes que fazem parte da solução e do ambiente de hospedagem da aplicação.
+A comunicação entre o aplicativo e o backend será realizada por meio de requisições HTTP utilizando APIs.
 
-![Arquitetura da Solução](img/02-mob-arch.png)
+A arquitetura adotada segue o modelo cliente-servidor, no qual:
 
-## Diagrama de Classes
+O cliente (aplicativo mobile) realiza requisições ao servidor
+O servidor processa as requisições e retorna as respostas
+O banco de dados é responsável pelo armazenamento das informações do sistema
+2. Arquitetura do Sistema
 
-O diagrama de classes ilustra graficamente como será a estrutura do software, e como cada uma das classes da sua estrutura estarão interligadas. Essas classes servem de modelo para materializar os objetos que executarão na memória.
+A solução é composta por três camadas principais:
 
-As referências abaixo irão auxiliá-lo na geração do artefato “Diagrama de Classes”.
+2.1 Camada de Apresentação (Frontend)
 
-> - [Diagramas de Classes - Documentação da IBM](https://www.ibm.com/docs/pt-br/rational-soft-arch/9.6.1?topic=diagrams-class)
-> - [O que é um diagrama de classe UML? | Lucidchart](https://www.lucidchart.com/pages/pt/o-que-e-diagrama-de-classe-uml)
+Responsável pela interação com o usuário.
 
-## Modelo ER
+Tecnologia utilizada:
 
-O Modelo ER representa através de um diagrama como as entidades (coisas, objetos) se relacionam entre si na aplicação interativa.]
+React Native
 
-As referências abaixo irão auxiliá-lo na geração do artefato “Modelo ER”.
+Principais funções:
 
-> - [Como fazer um diagrama entidade relacionamento | Lucidchart](https://www.lucidchart.com/pages/pt/como-fazer-um-diagrama-entidade-relacionamento)
+Exibição das interfaces do sistema
+Captura de dados inseridos pelo usuário
+Comunicação com o backend por meio de APIs
+2.2 Camada de Aplicação (Backend)
 
-## Esquema Relacional
+Responsável pela lógica de negócio do sistema.
 
-O Esquema Relacional corresponde à representação dos dados em tabelas juntamente com as restrições de integridade e chave primária.
- 
-As referências abaixo irão auxiliá-lo na geração do artefato “Esquema Relacional”.
+Tecnologia utilizada:
 
-> - [Criando um modelo relacional - Documentação da IBM](https://www.ibm.com/docs/pt-br/cognos-analytics/10.2.2?topic=designer-creating-relational-model)
+Firebase (Authentication e Firestore)
 
-## Modelo Físico
+Principais funções:
 
-Entregar um arquivo banco.sql contendo os scripts de criação das tabelas do banco de dados. Este arquivo deverá ser incluído dentro da pasta src\bd.
+Processamento das requisições
+Aplicação das regras de negócio
+Autenticação de usuários
+Gerenciamento de agendamentos
+Controle de status dos serviços
 
-## Tecnologias Utilizadas
+O sistema utilizará autenticação baseada em e-mail e senha, gerenciada pelo Firebase Authentication.
 
-Descreva aqui qual(is) tecnologias você vai usar para resolver o seu problema, ou seja, implementar a sua solução. Liste todas as tecnologias envolvidas, linguagens a serem utilizadas, serviços web, frameworks, bibliotecas, IDEs de desenvolvimento, e ferramentas.
+2.3 Camada de Dados (Banco de Dados)
 
-Apresente também uma figura explicando como as tecnologias estão relacionadas ou como uma interação do usuário com o sistema vai ser conduzida, por onde ela passa até retornar uma resposta ao usuário.
+Responsável pelo armazenamento das informações do sistema.
 
-## Hospedagem
+Tecnologia utilizada:
 
-Explique como a hospedagem e o lançamento da plataforma foi feita.
+Firebase Firestore
 
-> **Links Úteis**:
->
-> - [Website com GitHub Pages](https://pages.github.com/)
-> - [Programação colaborativa com Repl.it](https://repl.it/)
-> - [Getting Started with Heroku](https://devcenter.heroku.com/start)
-> - [Publicando Seu Site No Heroku](http://pythonclub.com.br/publicando-seu-hello-world-no-heroku.html)
+O Firestore é um banco de dados NoSQL orientado a documentos, adequado para aplicações mobile devido à sua escalabilidade, flexibilidade e integração com serviços em tempo real.
 
-## Qualidade de Software
+Principais dados armazenados:
 
-Conceituar qualidade de fato é uma tarefa complexa, mas ela pode ser vista como um método gerencial que através de procedimentos disseminados por toda a organização, busca garantir um produto final que satisfaça às expectativas dos stakeholders.
+Usuários
+Técnicos
+Serviços
+Agendamentos
+Mensagens
+Avaliações
+3. Tecnologias Utilizadas
 
-No contexto de desenvolvimento de software, qualidade pode ser entendida como um conjunto de características a serem satisfeitas, de modo que o produto de software atenda às necessidades de seus usuários. Entretanto, tal nível de satisfação nem sempre é alcançado de forma espontânea, devendo ser continuamente construído. Assim, a qualidade do produto depende fortemente do seu respectivo processo de desenvolvimento.
+As tecnologias adotadas no desenvolvimento do sistema são:
 
-A norma internacional ISO/IEC 25010, que é uma atualização da ISO/IEC 9126, define oito características e 30 subcaracterísticas de qualidade para produtos de software.
-Com base nessas características e nas respectivas sub-características, identifique as sub-características que sua equipe utilizará como base para nortear o desenvolvimento do projeto de software considerando-se alguns aspectos simples de qualidade. Justifique as subcaracterísticas escolhidas pelo time e elenque as métricas que permitirão a equipe avaliar os objetos de interesse.
+React Native (desenvolvimento da aplicação mobile)
+Firebase (backend, autenticação e banco de dados)
+GitHub (controle de versão)
+Figma (prototipação de interfaces)
+Trello (gerenciamento de tarefas)
+4. Fluxo de Funcionamento
 
-> **Links Úteis**:
->
-> - [ISO/IEC 25010:2011 - Systems and software engineering — Systems and software Quality Requirements and Evaluation (SQuaRE) — System and software quality models](https://www.iso.org/standard/35733.html/)
-> - [Análise sobre a ISO 9126 – NBR 13596](https://www.tiespecialistas.com.br/analise-sobre-iso-9126-nbr-13596/)
-> - [Qualidade de Software - Engenharia de Software 29](https://www.devmedia.com.br/qualidade-de-software-engenharia-de-software-29/18209/)
+O funcionamento do sistema ocorre conforme as etapas descritas a seguir:
+
+O usuário acessa o aplicativo
+Realiza login ou cadastro
+O aplicativo envia os dados ao backend
+O backend valida as informações e retorna a resposta
+O usuário navega pelas funcionalidades do sistema
+As ações realizadas (agendamentos, mensagens, atualizações de status) são processadas pelo backend
+Os dados são armazenados e recuperados do banco de dados conforme necessário
+5. Modelo de Dados (Descrição)
+
+O sistema é composto pelas seguintes entidades principais:
+
+Usuário
+Técnico
+Serviço
+Agendamento
+Mensagem
+Avaliação
+
+As entidades foram definidas com base nos requisitos funcionais do sistema, garantindo suporte às funcionalidades principais.
+
+Relacionamentos:
+
+Um usuário pode realizar vários agendamentos
+Um técnico pode oferecer vários serviços
+Um agendamento está associado a um usuário e a um técnico
+Um serviço pode receber múltiplas avaliações
+6. Hospedagem
+
+Para fins acadêmicos, a aplicação poderá ser executada em ambiente local durante o desenvolvimento.
+
+O backend será hospedado utilizando os serviços do Firebase, que oferecem infraestrutura escalável e integração direta com aplicações mobile.
+
+7. Qualidade de Software
+
+A qualidade do sistema será baseada nas características definidas pela norma ISO/IEC 25010.
+
+Foram consideradas as seguintes características:
+
+Usabilidade
+Interface simples e intuitiva
+Facilidade de navegação
+Desempenho
+Tempo de resposta adequado
+Carregamento eficiente das telas
+Confiabilidade
+Funcionamento estável do sistema
+Tratamento de erros
+Segurança
+Proteção dos dados dos usuários
+Autenticação segura
