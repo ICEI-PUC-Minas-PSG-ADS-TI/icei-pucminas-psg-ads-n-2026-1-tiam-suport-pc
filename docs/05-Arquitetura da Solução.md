@@ -1,4 +1,4 @@
-# 05 - ARQUITETURA DA SOLUÇÃO
+#  ARQUITETURA DA SOLUÇÃO
 
 ## 1. Visao Geral da Arquitetura
 
