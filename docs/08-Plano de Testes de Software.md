@@ -1,129 +1,58 @@
-PLANO DE TESTES DE SOFTWARE
-1. Visão Geral
+#  Plano de Testes de Software
 
-Este plano de testes tem como objetivo validar as funcionalidades do sistema desenvolvido, garantindo que os requisitos funcionais sejam atendidos de forma adequada.
+## 1. Visão Geral
+Este plano tem como objetivo validar as funcionalidades do sistema, garantindo que os requisitos funcionais sejam atendidos de forma adequada. Os testes foram realizados com **usuários reais** em cenários que simulam o uso cotidiano do aplicativo.
 
-Os testes foram realizados com usuários reais, utilizando cenários que simulam o uso do aplicativo no dia a dia, com foco na verificação das principais funcionalidades.
+---
 
-2. Público Participante
+## 2. Público e Metodologia
 
-Os testes foram realizados com a participação de 5 usuários reais, representando o público-alvo da aplicação.
+###  Público Participante
+*   **Quantidade:** 5 usuários reais (público-alvo).
+*   **Dispositivos:** Smartphones reais (Android) para simular o ambiente de uso real.
 
-Os participantes utilizaram o sistema em dispositivos móveis reais, permitindo avaliar o comportamento da aplicação em um ambiente próximo ao uso real.
+### Metodologia
+Foi aplicada a técnica de **Testes Guiados**, onde os participantes seguiram instruções específicas para validar funcionalidades individualmente, permitindo a observação direta de dificuldades e erros de fluxo.
 
-3. Metodologia de Testes
+---
 
-Os testes foram conduzidos de forma guiada, onde os participantes receberam instruções específicas para executar determinadas tarefas dentro do aplicativo.
+## 3. Cenários de Teste
 
-Essa abordagem permitiu validar cada funcionalidade individualmente, além de observar dificuldades, erros e pontos de melhoria na interface e no fluxo do sistema.
+| ID | Cenário | Objetivo | Resultado Esperado |
+| :--- | :--- | :--- | :--- |
+| **01** | **Cadastro e Login** | Validar criação de conta e acesso. | Cadastro concluído e acesso liberado sem erros. |
+| **02** | **Geolocalização** | Exibir técnicos próximos ao usuário. | Lista de técnicos filtrada por proximidade geográfica. |
+| **03** | **Lista de Serviços** | Verificar detalhes dos serviços. | Exibição clara de nome, descrição e preço. |
+| **04** | **Agendamento** | Validar reserva de atendimento. | Registro do agendamento com status "Em análise". |
+| **05** | **Acompanhamento** | Monitorar o status do serviço. | Exibição correta das etapas (Análise > Confirmado > etc). |
+| **06** | **Chat em Tempo Real** | Validar comunicação Cliente/Técnico. | Envio e recebimento de textos e imagens com sucesso. |
+| **07** | **Avaliação** | Registrar feedback do serviço. | Nota e comentário salvos com sucesso no perfil do técnico. |
 
-4. Cenários de Teste
-Cenário 1 – Cadastro e Login
+---
 
-Objetivo:
-Verificar se o usuário consegue criar uma conta e acessar o sistema.
+## 4. Detalhamento dos Passos
 
-Passos:
+> [!NOTE]
+> Abaixo estão os fluxos seguidos pelos usuários durante a execução de cada cenário.
 
-Acessar a tela de cadastro
-Inserir os dados solicitados
-Realizar o cadastro
-Efetuar login com as credenciais criadas
+*   **Cenário 1:** Tela de cadastro ➔ Inserção de dados ➔ Login.
+*   **Cenário 2:** Home ➔ Permissão de GPS ➔ Visualização de técnicos no mapa/lista.
+*   **Cenário 4:** Seleção de serviço ➔ Escolha de data/horário ➔ Confirmação.
+*   **Cenário 6:** Abrir Chat ➔ Digitar mensagem ➔ Anexar imagem ➔ Enviar.
 
-Resultado esperado:
-O usuário deve conseguir se cadastrar e acessar o sistema sem erros.
+---
 
-Cenário 2 – Busca de Técnicos (Geolocalização)
+## 5. Ferramentas Utilizadas
+O ambiente de teste foi composto pelas seguintes tecnologias:
 
-Objetivo:
-Verificar se o sistema exibe técnicos próximos ao usuário.
+*   **Hardware:** Dispositivos móveis reais (Sistema Android).
+*   **Framework:** React Native.
+*   **Backend/Database:** Firebase (Realtime Database & Storage).
 
-Passos:
+---
 
-Acessar a tela inicial
-Permitir acesso à localização
-Visualizar a lista de técnicos disponíveis
+## 6. Considerações Finais
+Os testes validaram que as funcionalidades principais atendem aos requisitos definidos. A abordagem guiada foi fundamental para identificar pontos de ajuste na interface, garantindo que o fluxo entre o agendamento e a conclusão do serviço ocorra sem impedimentos técnicos.
 
-Resultado esperado:
-O sistema deve apresentar técnicos próximos com base na localização do usuário.
-
-Cenário 3 – Visualização de Serviços
-
-Objetivo:
-Verificar se o usuário consegue visualizar os serviços disponíveis.
-
-Passos:
-
-Selecionar um técnico
-Acessar a lista de serviços
-
-Resultado esperado:
-Os serviços devem ser exibidos com nome, descrição e preço.
-
-Cenário 4 – Agendamento de Serviço
-
-Objetivo:
-Verificar se o usuário consegue agendar um atendimento.
-
-Passos:
-
-Selecionar um serviço
-Escolher data e horário
-Confirmar o agendamento
-
-Resultado esperado:
-O agendamento deve ser registrado com status inicial "em análise".
-
-Cenário 5 – Acompanhamento do Serviço
-
-Objetivo:
-Verificar se o usuário consegue acompanhar o status do serviço.
-
-Passos:
-
-Acessar a área de agendamentos
-Visualizar o status do serviço
-
-Resultado esperado:
-O sistema deve exibir corretamente o status (em análise, confirmado, em andamento, concluído).
-
-Cenário 6 – Comunicação via Chat
-
-Objetivo:
-Verificar a comunicação entre cliente e técnico.
-
-Passos:
-
-Acessar o chat
-Enviar mensagem de texto
-Enviar imagem
-
-Resultado esperado:
-As mensagens devem ser enviadas e recebidas corretamente em tempo real.
-
-Cenário 7 – Avaliação de Serviço
-
-Objetivo:
-Verificar se o usuário consegue avaliar o serviço realizado.
-
-Passos:
-
-Acessar um serviço concluído
-Inserir nota e comentário
-Confirmar avaliação
-
-Resultado esperado:
-A avaliação deve ser registrada com sucesso.
-
-5. Ferramentas de Testes
-
-Os testes foram realizados utilizando:
-
-Dispositivos móveis reais (Android)
-Aplicação desenvolvida em React Native
-Firebase (backend e banco de dados)
-6. Considerações
-
-Os testes permitiram validar as principais funcionalidades do sistema, demonstrando que o aplicativo atende aos requisitos definidos.
-
-A utilização de testes guiados possibilitou uma avaliação mais precisa das funcionalidades, além de identificar possíveis melhorias na usabilidade do sistema.
+---
+*Documento atualizado em: 14/05/2026*
