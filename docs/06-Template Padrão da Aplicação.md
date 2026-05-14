@@ -1,94 +1,90 @@
-6. Modelo de Dados (Firebase Firestore)
+# 06 - MODELO DE DADOS (FIREBASE FIRESTORE)
 
-O sistema utilizará o Firebase Firestore como banco de dados, adotando uma estrutura baseada em coleções e documentos.
+O sistema utiliza o Firebase Firestore como banco de dados NoSQL, adotando uma estrutura baseada em colecoes e documentos. A organizacao foi projetada para otimizar o gerenciamento de usuarios, servicos, agendamentos, comunicacao e avaliacoes.
 
-As coleções foram definidas de acordo com as funcionalidades do sistema, permitindo o gerenciamento de usuários, serviços, agendamentos, comunicação e avaliações.
+---
 
-Coleção: users
+## 1. Estrutura de Colecoes
 
-Armazena os dados dos usuários do sistema, incluindo clientes e técnicos.
+### Colecao: users
+Armazena as informacoes de clientes e tecnicos autenticados.
 
-Campos:
+| Campo | Tipo | Descricao |
+| :--- | :--- | :--- |
+| **id** | string | Identificador unico do usuario (UID do Firebase Auth). |
+| **nome** | string | Nome completo do usuario. |
+| **email** | string | Endereco de e-mail utilizado no login. |
+| **telefone** | string | Numero de contato do usuario. |
+| **tipo** | string | Define a permissao: "cliente" ou "tecnico". |
+| **createdAt** | timestamp | Data e hora de criacao da conta. |
 
-id (string) – identificador único do usuário
-nome (string)
-email (string)
-telefone (string)
-tipo (string) – "cliente" ou "tecnico"
-createdAt (timestamp)
-Coleção: services
+### Colecao: services
+Armazena o catalogo de servicos oferecidos pelos profissionais.
 
-Armazena os serviços oferecidos pelos técnicos.
+| Campo | Tipo | Descricao |
+| :--- | :--- | :--- |
+| **id** | string | Identificador unico do servico. |
+| **tecnicoId** | string | Referencia ao UID do tecnico proprietario do servico. |
+| **nome** | string | Ex: "Troca de tela", "Troca de bateria", "Reparo de placa". |
+| **descricao** | string | Detalhes sobre o servico prestado. |
+| **preco** | number | Valor base do servico. |
+| **createdAt** | timestamp | Data de cadastro do servico. |
 
-Campos:
+### Colecao: appointments
+Gerencia os agendamentos e o fluxo de trabalho.
 
-id (string)
-tecnicoId (string) – referência ao usuário técnico
-nome (string) – ex: "Troca de tela", "Troca de bateria"
-descricao (string)
-preco (number)
-createdAt (timestamp)
+| Campo | Tipo | Descricao |
+| :--- | :--- | :--- |
+| **id** | string | Identificador unico do agendamento. |
+| **clienteId** | string | Referencia ao UID do cliente solicitante. |
+| **tecnicoId** | string | Referencia ao UID do tecnico responsavel. |
+| **servicoId** | string | Referencia ao ID do servico selecionado. |
+| **data** | date | Data agendada para o atendimento. |
+| **horario** | string | Horario definido para o serviço. |
+| **status** | string | "em_analise", "em_andamento" ou "concluido". |
+| **createdAt** | timestamp | Registro de quando o agendamento foi criado. |
 
-Exemplos de serviços cadastrados:
+### Colecao: messages
+Responsavel pela persistencia das conversas em tempo real.
 
-Troca de tela
-Troca de bateria
-Troca de carcaça
-Formatação de sistema
-Reparo de placa
-Coleção: appointments (agendamentos)
+| Campo | Tipo | Descricao |
+| :--- | :--- | :--- |
+| **id** | string | Identificador unico da mensagem. |
+| **chatId** | string | ID da conversa (composto pelos IDs de cliente e tecnico). |
+| **remetenteId** | string | ID de quem enviou a mensagem. |
+| **destinatarioId** | string | ID de quem recebera a mensagem. |
+| **mensagem** | string | Conteudo textual da comunicacao. |
+| **timestamp** | timestamp | Horario exato do envio. |
 
-Armazena os agendamentos realizados pelos usuários.
+### Colecao: reviews
+Armazena o feedback de satisfacao apos a conclusao do servico.
 
-Campos:
+| Campo | Tipo | Descricao |
+| :--- | :--- | :--- |
+| **id** | string | Identificador unico da avaliacao. |
+| **clienteId** | string | UID do cliente avaliador. |
+| **tecnicoId** | string | UID do tecnico avaliado. |
+| **servicoId** | string | ID do servico que foi avaliado. |
+| **nota** | number | Valor numerico de 1 a 5. |
+| **comentario** | string | Observacoes textuais do cliente. |
 
-id (string)
-clienteId (string)
-tecnicoId (string)
-servicoId (string)
-data (date)
-horario (string)
-status (string) – "em_analise", "em_andamento", "concluido"
-createdAt (timestamp)
-Coleção: messages
+---
 
-Responsável pelo chat entre cliente e técnico.
+## 2. Relacionamentos entre Dados
 
-Campos:
+*   **Usuario (Cliente) x Agendamento:** Relacao 1:N (Um cliente realiza varios agendamentos).
+*   **Usuario (Tecnico) x Servico:** Relacao 1:N (Um tecnico oferece varios tipos de manutencao).
+*   **Agendamento x Entidades:** Vinculo obrigatorio entre um Cliente, um Tecnico e um Servico especifico.
+*   **Servico x Avaliacao:** Relacao 1:N (Um servico pode acumular diversas notas e feedbacks).
+*   **Mensagens:** Relacionamento bidirecional baseado no identificador unico do chat entre duas partes.
 
-id (string)
-chatId (string) – identificador da conversa
-remetenteId (string)
-destinatarioId (string)
-mensagem (string)
-timestamp (timestamp)
-Coleção: reviews (avaliações)
+---
 
-Armazena as avaliações realizadas pelos usuários após a conclusão do serviço.
+## 3. Beneficios da Arquitetura Firestore
 
-Campos:
+*   **Sincronizacao:** Atualizacao instantanea da interface para chats e status de agendamento.
+*   **Escalabilidade:** Suporte ao crescimento do volume de usuarios e servicos sem perda de performance.
+*   **Seguranca:** Integracao nativa com Firebase Authentication para protecao dos documentos.
 
-id (string)
-clienteId (string)
-tecnicoId (string)
-servicoId (string)
-nota (number) – de 1 a 5
-comentario (string)
-createdAt (timestamp)
-Relacionamentos entre Dados
-
-O modelo de dados estabelece os seguintes relacionamentos:
-
-Um usuário (cliente) pode realizar vários agendamentos
-Um usuário (técnico) pode oferecer vários serviços
-Um agendamento está vinculado a um cliente, um técnico e um serviço
-Um serviço pode possuir múltiplas avaliações
-Um usuário pode enviar e receber múltiplas mensagens
-Considerações
-
-O uso do Firebase Firestore permite:
-
-Armazenamento escalável de dados
-Sincronização em tempo real (utilizada no chat)
-Integração com autenticação via Firebase Authentication
-Facilidade de integração com aplicações mobile desenvolvidas em React Native
+---
+*Documento atualizado em: 14/05/2026*
