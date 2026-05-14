@@ -1,4 +1,4 @@
-# 06 - MODELO DE DADOS (FIREBASE FIRESTORE)
+#  MODELO DE DADOS (FIREBASE FIRESTORE)
 
 O sistema utiliza o Firebase Firestore como banco de dados NoSQL, adotando uma estrutura baseada em colecoes e documentos. A organizacao foi projetada para otimizar o gerenciamento de usuarios, servicos, agendamentos, comunicacao e avaliacoes.
 
