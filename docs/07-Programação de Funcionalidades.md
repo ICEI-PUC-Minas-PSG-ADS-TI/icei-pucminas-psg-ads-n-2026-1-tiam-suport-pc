@@ -1,178 +1,218 @@
-PROGRAMAÇÃO DE FUNCIONALIDADES
-1. Visão Geral
+# PROGRAMAÇÃO DE FUNCIONALIDADES
+
+## Visão Geral
 
 A implementação do sistema será realizada com base nos requisitos funcionais definidos na especificação do projeto. As funcionalidades serão desenvolvidas utilizando React Native no frontend e Firebase como backend, incluindo autenticação, banco de dados e comunicação em tempo real.
 
 Cada funcionalidade será implementada de forma modular, garantindo organização do código e facilidade de manutenção.
 
-2. Implementação das Funcionalidades
-RF-001 – Cadastro e Login de Usuários
+---
 
-Descrição:
+## Implementação das Funcionalidades
+
+### RF-001 – Cadastro e Login de Usuários
+
+#### Descrição
+
 Permite que usuários realizem cadastro e autenticação no sistema utilizando e-mail e senha.
 
-Tecnologias utilizadas:
+#### Tecnologias utilizadas
 
-Firebase Authentication
-React Native
+- Firebase Authentication
+- React Native
 
-Estrutura de dados:
+#### Estrutura de dados
 
-Coleção: users
+- Coleção: users
 
-Funcionalidades implementadas:
+#### Funcionalidades implementadas
 
-Cadastro de usuário
-Login com e-mail e senha
-Persistência de sessão
-RF-002 – Cadastro de Serviços
+- Cadastro de usuário
+- Login com e-mail e senha
+- Persistência de sessão
 
-Descrição:
+---
+
+### RF-002 – Cadastro de Serviços
+
+#### Descrição
+
 Permite que técnicos cadastrem serviços oferecidos.
 
-Tecnologias utilizadas:
+#### Tecnologias utilizadas
 
-Firebase Firestore
+- Firebase Firestore
 
-Estrutura de dados:
+#### Estrutura de dados
 
-Coleção: services
+- Coleção: services
 
-Funcionalidades implementadas:
+#### Funcionalidades implementadas
 
-Cadastro de serviços
-Edição de serviços
-Listagem de serviços
-RF-003 – Definição de Agenda
+- Cadastro de serviços
+- Edição de serviços
+- Listagem de serviços
 
-Descrição:
+---
+
+### RF-003 – Definição de Agenda
+
+#### Descrição
+
 Permite que técnicos organizem seus atendimentos por meio dos agendamentos recebidos.
 
-Tecnologias utilizadas:
+#### Tecnologias utilizadas
 
-Firebase Firestore
+- Firebase Firestore
 
-Estrutura de dados:
+#### Estrutura de dados
 
-Coleção: appointments
+- Coleção: appointments
 
-Funcionalidades implementadas:
+#### Funcionalidades implementadas
 
-Visualização de agendamentos
-Atualização de status
-RF-004 – Geolocalização de Assistências
+- Visualização de agendamentos
+- Atualização de status
 
-Descrição:
+---
+
+### RF-004 – Geolocalização de Assistências
+
+#### Descrição
+
 Permite ao usuário localizar técnicos próximos com base em sua localização.
 
-Tecnologias utilizadas:
+#### Tecnologias utilizadas
 
-API de localização do dispositivo
-Firebase Firestore
+- API de localização do dispositivo
+- Firebase Firestore
 
-Funcionalidades implementadas:
+#### Funcionalidades implementadas
 
-Captura de localização (latitude e longitude)
-Filtragem de técnicos por proximidade
-RF-005 – Visualização de Serviços
+- Captura de localização (latitude e longitude)
+- Filtragem de técnicos por proximidade
 
-Descrição:
+---
+
+### RF-005 – Visualização de Serviços
+
+#### Descrição
+
 Permite ao usuário visualizar serviços oferecidos pelos técnicos.
 
-Tecnologias utilizadas:
+#### Tecnologias utilizadas
 
-Firebase Firestore
+- Firebase Firestore
 
-Funcionalidades implementadas:
+#### Funcionalidades implementadas
 
-Listagem de serviços
-Exibição de descrição e preço
-Visualização de avaliações
-RF-006 – Agendamento de Atendimentos
+- Listagem de serviços
+- Exibição de descrição e preço
+- Visualização de avaliações
 
-Descrição:
+---
+
+### RF-006 – Agendamento de Atendimentos
+
+#### Descrição
+
 Permite que o usuário agende serviços com técnicos.
 
-Tecnologias utilizadas:
+#### Tecnologias utilizadas
 
-Firebase Firestore
+- Firebase Firestore
 
-Estrutura de dados:
+#### Estrutura de dados
 
-Coleção: appointments
+- Coleção: appointments
 
-Funcionalidades implementadas:
+#### Funcionalidades implementadas
 
-Seleção de data e horário
-Criação de agendamento
-Confirmação pelo técnico
-RF-007 – Acompanhamento do Reparo
+- Seleção de data e horário
+- Criação de agendamento
+- Confirmação pelo técnico
 
-Descrição:
+---
+
+### RF-007 – Acompanhamento do Reparo
+
+#### Descrição
+
 Permite acompanhar o status do serviço.
 
-Tecnologias utilizadas:
+#### Tecnologias utilizadas
 
-Firebase Firestore
+- Firebase Firestore
 
-Funcionalidades implementadas:
+#### Funcionalidades implementadas
 
-Visualização de status do serviço
-Atualização de status pelo técnico
+- Visualização de status do serviço
+- Atualização de status pelo técnico
 
-Status utilizados:
+#### Status utilizados
 
-Em análise
-Confirmado
-Em andamento
-Concluído
-RF-008 – Comunicação via Chat
+- Em análise
+- Confirmado
+- Em andamento
+- Concluído
 
-Descrição:
+---
+
+### RF-008 – Comunicação via Chat
+
+#### Descrição
+
 Permite comunicação entre cliente e técnico.
 
-Tecnologias utilizadas:
+#### Tecnologias utilizadas
 
-Firebase Firestore
+- Firebase Firestore
 
-Estrutura de dados:
+#### Estrutura de dados
 
-Coleção: messages
+- Coleção: messages
 
-Funcionalidades implementadas:
+#### Funcionalidades implementadas
 
-Envio de mensagens de texto
-Envio de imagens
-Atualização em tempo real
-RF-009 – Avaliação de Serviços
+- Envio de mensagens de texto
+- Envio de imagens
+- Atualização em tempo real
 
-Descrição:
+---
+
+### RF-009 – Avaliação de Serviços
+
+#### Descrição
+
 Permite ao usuário avaliar serviços realizados.
 
-Tecnologias utilizadas:
+#### Tecnologias utilizadas
 
-Firebase Firestore
+- Firebase Firestore
 
-Estrutura de dados:
+#### Estrutura de dados
 
-Coleção: reviews
+- Coleção: reviews
 
-Funcionalidades implementadas:
+#### Funcionalidades implementadas
 
-Registro de nota (1 a 5)
-Registro de comentário
+- Registro de nota (1 a 5)
+- Registro de comentário
 
-Regra:
+#### Regra
 
-Avaliação disponível apenas após conclusão do serviço
-3. Estrutura de Dados Utilizada
+- Avaliação disponível apenas após conclusão do serviço
+
+---
+
+## Estrutura de Dados Utilizada
 
 O sistema utiliza as seguintes coleções no Firebase Firestore:
 
-users
-services
-appointments
-messages
-reviews
+- users
+- services
+- appointments
+- messages
+- reviews
 
 Essas estruturas permitem armazenar e recuperar informações de forma eficiente, garantindo suporte às funcionalidades do sistema.
