@@ -7,7 +7,7 @@ O projeto de interface do aplicativo foi desenvolvido com foco na usabilidade, s
 O principal objetivo é permitir que o usuário localize assistências técnicas, visualize serviços, realize agendamentos e acompanhe o status dos reparos de forma clara e intuitiva.
 
 A interface foi estruturada considerando os requisitos funcionais e não funcionais definidos no projeto, priorizando facilidade de navegação, organização das informações e redução do número de etapas para execução das tarefas.
-
+##Link do Figma -> https://crate-beam-42440876.figma.site/
 ---
 
 ## Padrão de Navegação
