@@ -9,7 +9,7 @@ O principal objetivo é permitir que o usuário localize assistências técnicas
 A interface foi estruturada considerando os requisitos funcionais e não funcionais definidos no projeto, priorizando facilidade de navegação, organização das informações e redução do número de etapas para execução das tarefas.
 
 ---
-##Link do Figma -> https://crate-beam-42440876.figma.site/
+## Link do Figma -> https://crate-beam-42440876.figma.site/
 ---
 
 ## Padrão de Navegação
