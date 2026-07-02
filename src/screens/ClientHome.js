@@ -1,94 +1,264 @@
-// Arquivo: src/screens/ClientHome.js
 import React, { useState, useEffect } from 'react';
-import { View, Text, StyleSheet, TouchableOpacity, ActivityIndicator, Alert } from 'react-native';
-import MapView, { Marker, Callout } from 'react-native-maps';
+import {
+  View,
+  Text,
+  StyleSheet,
+  TouchableOpacity,
+  TextInput,
+  FlatList,
+  ActivityIndicator,
+  Alert,
+} from 'react-native';
+
+import MapView, { Marker } from 'react-native-maps';
 import * as Location from 'expo-location';
 
 export default function ClientHome({ navigation }) {
   const [location, setLocation] = useState(null);
   const [loading, setLoading] = useState(true);
+  const [search, setSearch] = useState('');
+
   const [shops, setShops] = useState([]);
 
   useEffect(() => {
     (async () => {
-      let { status } = await Location.requestForegroundPermissionsAsync();
+      const { status } =
+        await Location.requestForegroundPermissionsAsync();
+
       if (status !== 'granted') {
-        Alert.alert('Erro', 'Precisamos do GPS para achar lojas perto de você.');
+        Alert.alert(
+          'Permissão necessária',
+          'Precisamos acessar sua localização.'
+        );
+
         setLoading(false);
         return;
       }
 
-      let userLocation = await Location.getCurrentPositionAsync({});
-      const { latitude, longitude } = userLocation.coords;
-      setLocation(userLocation.coords);
+      const currentLocation =
+        await Location.getCurrentPositionAsync({});
 
-      // GERADOR AUTOMÁTICO DE LOJAS PRÓXIMAS (Para teste)
-      // Criamos 3 lojas somando ou subtraindo um pouquinho da sua latitude real
-      const mockShops = [
-        { id: '1', name: 'Conserta Smart', latitude: latitude + 0.002, longitude: longitude + 0.002, services: 'Telas, Baterias e Conectores' },
-        { id: '2', name: 'Doutor Celular', latitude: latitude - 0.002, longitude: longitude - 0.002, services: 'Placa-mãe e Limpeza Química' },
-        { id: '3', name: 'Oficina do Mobile', latitude: latitude + 0.003, longitude: longitude - 0.003, services: 'Software, Unbrick e Películas' },
-      ];
-      setShops(mockShops);
+      const { latitude, longitude } =
+        currentLocation.coords;
+
+      setLocation(currentLocation.coords);
+
+      setShops([
+        {
+          id: '1',
+          name: 'Conserta Smart',
+          services: 'Tela, Bateria e Conector',
+          latitude: latitude + 0.002,
+          longitude: longitude + 0.002,
+        },
+        {
+          id: '2',
+          name: 'Doutor Celular',
+          services: 'Placa e Software',
+          latitude: latitude - 0.002,
+          longitude: longitude - 0.002,
+        },
+        {
+          id: '3',
+          name: 'Oficina Mobile',
+          services: 'Limpeza e Recuperação',
+          latitude: latitude + 0.003,
+          longitude: longitude - 0.002,
+        },
+      ]);
+
       setLoading(false);
     })();
   }, []);
 
+  const filteredShops = shops.filter((shop) =>
+    shop.name
+      .toLowerCase()
+      .includes(search.toLowerCase())
+  );
+
+  if (loading) {
+    return (
+      <View style={styles.loadingContainer}>
+        <ActivityIndicator
+          size="large"
+          color="#3498DB"
+        />
+
+        <Text style={styles.loadingText}>
+          Procurando assistências...
+        </Text>
+      </View>
+    );
+  }
+
   return (
     <View style={styles.container}>
       <View style={styles.header}>
-        <Text style={styles.title}>Assistências Próximas</Text>
-        <TouchableOpacity onPress={() => navigation.replace('Login')}>
-          <Text style={styles.logoutText}>Sair</Text>
+        <Text style={styles.title}>
+          Assistências Próximas
+        </Text>
+
+        <TouchableOpacity
+          onPress={() =>
+            navigation.replace('Login')
+          }
+        >
+          <Text style={styles.logout}>
+            Sair
+          </Text>
         </TouchableOpacity>
       </View>
 
-      {loading ? (
-        <View style={styles.loadingContainer}>
-          <ActivityIndicator size="large" color="#3498db" />
-          <Text style={styles.loadingText}>Localizando lojas próximas...</Text>
-        </View>
-      ) : (
-        <MapView 
-          style={styles.map}
-          initialRegion={{
-            latitude: location.latitude,
-            longitude: location.longitude,
-            latitudeDelta: 0.01,
-            longitudeDelta: 0.01,
-          }}
-          showsUserLocation={true}
-        >
-          {shops.map((shop) => (
-            <Marker
-              key={shop.id}
-              coordinate={{ latitude: shop.latitude, longitude: shop.longitude }}
-              pinColor="red"
-            >
-              {/* O Callout é o balãozinho que aparece ao clicar no pino */}
-              <Callout onPress={() => navigation.navigate('ShopDetails', { shop })}>
-                <View style={styles.calloutBox}>
-                  <Text style={styles.shopName}>{shop.name}</Text>
-                  <Text style={styles.shopTap}>Clique para ver detalhes</Text>
-                </View>
-              </Callout>
-            </Marker>
-          ))}
-        </MapView>
-      )}
+      <TextInput
+        style={styles.searchInput}
+        placeholder="Buscar assistência..."
+        value={search}
+        onChangeText={setSearch}
+      />
+
+      <MapView
+        style={styles.map}
+        initialRegion={{
+          latitude: location.latitude,
+          longitude: location.longitude,
+          latitudeDelta: 0.01,
+          longitudeDelta: 0.01,
+        }}
+        showsUserLocation
+      >
+        {filteredShops.map((shop) => (
+          <Marker
+            key={shop.id}
+            coordinate={{
+              latitude: shop.latitude,
+              longitude: shop.longitude,
+            }}
+            title={shop.name}
+            description={shop.services}
+          />
+        ))}
+      </MapView>
+
+      <Text style={styles.sectionTitle}>
+        Assistências Disponíveis
+      </Text>
+
+      <FlatList
+        data={filteredShops}
+        keyExtractor={(item) => item.id}
+        renderItem={({ item }) => (
+          <TouchableOpacity
+            style={styles.card}
+            onPress={() =>
+              navigation.navigate(
+                'ShopDetails',
+                {
+                  shop: item,
+                }
+              )
+            }
+          >
+            <Text style={styles.shopName}>
+              {item.name}
+            </Text>
+
+            <Text style={styles.shopServices}>
+              {item.services}
+            </Text>
+          </TouchableOpacity>
+        )}
+      />
     </View>
   );
 }
 
 const styles = StyleSheet.create({
-  container: { flex: 1 },
-  header: { flexDirection: 'row', justifyContent: 'space-between', padding: 20, paddingTop: 50, backgroundColor: '#fff', elevation: 4 },
-  title: { fontSize: 18, fontWeight: 'bold' },
-  logoutText: { color: '#e74c3c', fontWeight: 'bold' },
-  map: { width: '100%', height: '100%' },
-  loadingContainer: { flex: 1, justifyContent: 'center', alignItems: 'center' },
-  loadingText: { marginTop: 10, color: '#7f8c8d' },
-  calloutBox: { padding: 10, width: 150 },
-  shopName: { fontWeight: 'bold', textAlign: 'center' },
-  shopTap: { fontSize: 10, color: '#3498db', textAlign: 'center', marginTop: 5 }
+  container: {
+    flex: 1,
+    backgroundColor: '#F5F5F5',
+  },
+
+  loadingContainer: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+
+  loadingText: {
+    marginTop: 10,
+    color: '#7F8C8D',
+  },
+
+  header: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+
+    paddingTop: 60,
+    paddingHorizontal: 20,
+    paddingBottom: 15,
+  },
+
+  title: {
+    fontSize: 22,
+    fontWeight: 'bold',
+    color: '#2C3E50',
+  },
+
+  logout: {
+    color: '#E74C3C',
+    fontWeight: 'bold',
+  },
+
+  searchInput: {
+    backgroundColor: '#FFF',
+    marginHorizontal: 20,
+    marginBottom: 15,
+
+    borderRadius: 12,
+
+    paddingHorizontal: 15,
+    height: 50,
+  },
+
+  map: {
+    height: 260,
+    marginHorizontal: 20,
+    borderRadius: 15,
+  },
+
+  sectionTitle: {
+    fontSize: 18,
+    fontWeight: 'bold',
+    color: '#2C3E50',
+
+    marginTop: 20,
+    marginHorizontal: 20,
+    marginBottom: 10,
+  },
+
+  card: {
+    backgroundColor: '#FFF',
+
+    marginHorizontal: 20,
+    marginBottom: 12,
+
+    padding: 15,
+
+    borderRadius: 12,
+
+    elevation: 2,
+  },
+
+  shopName: {
+    fontSize: 16,
+    fontWeight: 'bold',
+    color: '#2C3E50',
+  },
+
+  shopServices: {
+    marginTop: 5,
+    color: '#7F8C8D',
+  },
 });
