@@ -13,206 +13,266 @@ import {
 
 import FirebaseService from "../firebase/firebaseService";
 
-export default function RegisterScreen({ navigation }) {
-
-  const [userType, setUserType] = useState("cliente");
+export default function ServiceRegisterScreen({ navigation }) {
 
   const [nome, setNome] = useState("");
-  const [email, setEmail] = useState("");
-  const [telefone, setTelefone] = useState("");
-  const [senha, setSenha] = useState("");
+  const [categoria, setCategoria] = useState("");
+  const [descricao, setDescricao] = useState("");
+  const [valor, setValor] = useState("");
+  const [tempo, setTempo] = useState("");
+  const [garantia, setGarantia] = useState("");
 
   const [loading, setLoading] = useState(false);
 
-  const handleRegister = async () => {
+  async function salvarServico() {
 
-    if (!nome || !email || !telefone || !senha) {
-      Alert.alert("Erro", "Preencha todos os campos.");
-      return;
-    }
-
-    if (!email.includes("@")) {
-      Alert.alert("Erro", "Email inválido.");
-      return;
-    }
-
-    if (senha.length < 6) {
-      Alert.alert("Erro", "Senha deve ter no mínimo 6 caracteres.");
+    if (
+      !nome ||
+      !categoria ||
+      !descricao ||
+      !valor ||
+      !tempo ||
+      !garantia
+    ) {
+      Alert.alert(
+        "Atenção",
+        "Preencha todos os campos."
+      );
       return;
     }
 
     try {
+
       setLoading(true);
 
-      await FirebaseService.cadastrarUsuario({
+      await FirebaseService.cadastrarServico({
+
         nome,
-        email,
-        telefone,
-        senha,
-        tipo: userType
+        categoria,
+        descricao,
+        valor: Number(valor),
+        tempo,
+        garantia
+
       });
 
-      Alert.alert("Sucesso", "Cadastro realizado!", [
-        { text: "OK", onPress: () => navigation.replace("Login") }
-      ]);
+      Alert.alert(
+        "Sucesso",
+        "Serviço cadastrado com sucesso!"
+      );
+
+      setNome("");
+      setCategoria("");
+      setDescricao("");
+      setValor("");
+      setTempo("");
+      setGarantia("");
 
     } catch (error) {
+
       console.log(error);
 
-      Alert.alert("Erro", error.message);
+      Alert.alert(
+        "Erro",
+        error.message
+      );
 
     } finally {
+
       setLoading(false);
+
     }
-  };
+
+  }
 
   return (
-    <SafeAreaView style={styles.container}>
-      <ScrollView contentContainerStyle={styles.content}>
 
-        <Text style={styles.title}>Criar Conta</Text>
+    <SafeAreaView style={styles.container}>
+
+      <ScrollView
+        contentContainerStyle={styles.content}
+        showsVerticalScrollIndicator={false}
+      >
+
+        <Text style={styles.title}>
+          Novo Serviço
+        </Text>
+
+        <Text style={styles.subtitle}>
+          Cadastre um serviço oferecido pela assistência técnica.
+        </Text>
 
         <View style={styles.card}>
 
-          <View style={styles.typeContainer}>
-
-            <TouchableOpacity
-              style={[
-                styles.typeButton,
-                userType === "cliente" && styles.activeType
-              ]}
-              onPress={() => setUserType("cliente")}
-            >
-              <Text style={styles.typeText}>Cliente</Text>
-            </TouchableOpacity>
-
-            <TouchableOpacity
-              style={[
-                styles.typeButton,
-                userType === "tecnico" && styles.activeType
-              ]}
-              onPress={() => setUserType("tecnico")}
-            >
-              <Text style={styles.typeText}>Técnico</Text>
-            </TouchableOpacity>
-
-          </View>
+          <Text style={styles.label}>
+            Nome do Serviço
+          </Text>
 
           <TextInput
-            placeholder="Nome"
+            style={styles.input}
+            placeholder="Ex: Troca de Tela"
             value={nome}
             onChangeText={setNome}
-            style={styles.input}
           />
 
-          <TextInput
-            placeholder="Email"
-            value={email}
-            onChangeText={setEmail}
-            style={styles.input}
-            autoCapitalize="none"
-          />
+          <Text style={styles.label}>
+            Categoria
+          </Text>
 
           <TextInput
-            placeholder="Telefone"
-            value={telefone}
-            onChangeText={setTelefone}
             style={styles.input}
-            keyboardType="phone-pad"
+            placeholder="Ex: Tela, Bateria, Software..."
+            value={categoria}
+            onChangeText={setCategoria}
           />
 
+          <Text style={styles.label}>
+            Descrição
+          </Text>
+
           <TextInput
-            placeholder="Senha"
-            value={senha}
-            onChangeText={setSenha}
+            style={styles.textArea}
+            placeholder="Descreva o serviço..."
+            multiline
+            value={descricao}
+            onChangeText={setDescricao}
+          />
+
+          <Text style={styles.label}>
+            Valor (R$)
+          </Text>
+
+          <TextInput
             style={styles.input}
-            secureTextEntry
+            placeholder="250"
+            keyboardType="numeric"
+            value={valor}
+            onChangeText={setValor}
+          />
+
+          <Text style={styles.label}>
+            Tempo Estimado
+          </Text>
+
+          <TextInput
+            style={styles.input}
+            placeholder="Ex: 2 dias"
+            value={tempo}
+            onChangeText={setTempo}
+          />
+
+          <Text style={styles.label}>
+            Garantia
+          </Text>
+
+          <TextInput
+            style={styles.input}
+            placeholder="Ex: 90 dias"
+            value={garantia}
+            onChangeText={setGarantia}
           />
 
           <TouchableOpacity
             style={styles.button}
-            onPress={handleRegister}
+            onPress={salvarServico}
             disabled={loading}
           >
-            {loading ? (
-              <ActivityIndicator color="#fff" />
-            ) : (
+
+            {
+              loading ?
+
+              <ActivityIndicator color="#FFF"/>
+
+              :
+
               <Text style={styles.buttonText}>
-                Cadastrar
+                Salvar Serviço
               </Text>
-            )}
+
+            }
+
           </TouchableOpacity>
 
         </View>
 
       </ScrollView>
+
     </SafeAreaView>
+
   );
+
 }
+
 const styles = StyleSheet.create({
 
-  container: {
-    flex: 1,
-    backgroundColor: "#F5F5F5"
+  container:{
+    flex:1,
+    backgroundColor:"#F5F5F5"
   },
 
-  content: {
-    padding: 20,
-    paddingTop: 40
+  content:{
+    padding:20,
+    paddingTop:40
   },
 
-  title: {
-    fontSize: 26,
-    fontWeight: "bold",
-    marginBottom: 20
+  title:{
+    fontSize:28,
+    fontWeight:"bold",
+    color:"#2C3E50"
   },
 
-  card: {
-    backgroundColor: "#fff",
-    padding: 20,
-    borderRadius: 15
+  subtitle:{
+    color:"#7F8C8D",
+    marginTop:5,
+    marginBottom:25
   },
 
-  typeContainer: {
-    flexDirection: "row",
-    marginBottom: 15
+  card:{
+    backgroundColor:"#FFF",
+    borderRadius:18,
+    padding:20,
+    elevation:3
   },
 
-  typeButton: {
-    flex: 1,
-    padding: 10,
-    borderWidth: 1,
-    marginHorizontal: 5,
-    alignItems: "center"
+  label:{
+    fontWeight:"bold",
+    color:"#2C3E50",
+    marginBottom:8,
+    marginTop:12
   },
 
-  activeType: {
-    backgroundColor: "#3498db"
+  input:{
+    borderWidth:1,
+    borderColor:"#DDD",
+    borderRadius:12,
+    paddingHorizontal:15,
+    height:50,
+    backgroundColor:"#FAFAFA"
   },
 
-  typeText: {
-    color: "#000"
+  textArea:{
+    borderWidth:1,
+    borderColor:"#DDD",
+    borderRadius:12,
+    backgroundColor:"#FAFAFA",
+    height:120,
+    padding:15,
+    textAlignVertical:"top"
   },
 
-  input: {
-    borderWidth: 1,
-    borderColor: "#ccc",
-    marginBottom: 10,
-    padding: 10,
-    borderRadius: 8
+  button:{
+    marginTop:30,
+    backgroundColor:"#27AE60",
+    height:55,
+    borderRadius:15,
+    justifyContent:"center",
+    alignItems:"center"
   },
 
-  button: {
-    backgroundColor: "#27ae60",
-    padding: 15,
-    alignItems: "center",
-    borderRadius: 10,
-    marginTop: 10
-  },
-
-  buttonText: {
-    color: "#fff",
-    fontWeight: "bold"
+  buttonText:{
+    color:"#FFF",
+    fontSize:17,
+    fontWeight:"bold"
   }
 
 });
