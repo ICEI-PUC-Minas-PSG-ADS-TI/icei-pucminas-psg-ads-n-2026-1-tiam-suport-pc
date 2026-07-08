@@ -1,3 +1,9 @@
+
+
+https://github.com/user-attachments/assets/0c289271-4c53-4b31-9ac9-b2286b1289b4
+
+
+
 # Apresentação
 
 [FixPhone - Apresentação.pdf](https://github.com/user-attachments/files/29777278/FixPhone.-.Apresentacao.pdf)
